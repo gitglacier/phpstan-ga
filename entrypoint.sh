@@ -25,8 +25,8 @@ echo "::endgroup::"
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 ./vendor/bin/parallel-lint --version && \
-./vendor/bin/parallel-lint --checkstyle --exclude vendor . | reviewdog -name="parallel-lint" -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}" && \
+./vendor/bin/parallel-lint --checkstyle --exclude vendor . | reviewdog -name="parallel-lint" -filter-mode=file -fail-on-error -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}" && \
 ./vendor/bin/phpstan --version && \
-./vendor/bin/phpstan analyse --no-progress --no-interaction --error-format=checkstyle | reviewdog -name="phpstan" -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}" && \
+./vendor/bin/phpstan analyse --no-progress --no-interaction --error-format=checkstyle | reviewdog -name="phpstan" -filter-mode=file -fail-on-error -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}" && \
 ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer --version && \
-./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --format=checkstyle | reviewdog -name="php-cs-fixer" -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}"
+./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --format=checkstyle | reviewdog -name="php-cs-fixer" -filter-mode=file -fail-on-error -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}"
