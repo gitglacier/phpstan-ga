@@ -29,4 +29,4 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 ./vendor/bin/phpstan --version && \
 ./vendor/bin/phpstan analyse --configuration=phpstan-ci.neon --no-progress --no-interaction --error-format=checkstyle | reviewdog -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}" && \
 ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer --version && \
-./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --format=checkstyle | reviewdog -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}" && \
+./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --format=checkstyle | reviewdog -f=checkstyle -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}"
