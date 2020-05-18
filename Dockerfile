@@ -23,7 +23,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git unzip wget
 
-ENV REVIEWDOG_VERSION=v0.9.17
+ENV REVIEWDOG_VERSION=v0.10.0
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
 ADD entrypoint.sh /entrypoint.sh
